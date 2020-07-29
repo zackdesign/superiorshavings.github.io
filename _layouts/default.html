@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+
+    <script src="https://kit.fontawesome.com/17357694a0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style type="text/css">
+
+    #navigation {
+        position: fixed;
+        right: 0;
+        text-align: center;
+        z-index: 1;
+    }
+
+    .call-button {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+
+    #intro {
+        background: #FFFFFF url('/images/shed.jpg') 50% 0 repeat;
+        height: 15em;
+    }
+    .logo {
+       padding-top: 2.5em;
+       width: 50%;
+    }
+    #products {
+        background: #FFFFFF url('/images/back2.jpg') 0% 10% repeat fixed;
+    }
+    .product {
+      margin-top: -2em;
+      margin-bottom: -2em;
+    }
+
+    #shavings {
+        background: #c51f23 url('/images/back3.jpg') 50% 50% repeat fixed;
+        padding-top: 20px;
+        color: white;
+    }
+
+    #about {
+        background: #404040 url('/images/back4.jpg') 50% 0 repeat fixed;
+        padding-top: 40px;
+    }
+
+    #contact {
+        background-color: #404040;
+    }
+
+    #contact h1 {
+        color: white;
+    }
+
+    #footer {
+        background: #404040 url('/images/footer.jpg') top center;
+        height: 37px;
+        border-bottom: 4px solid white;
+    }
+
+    .jumbotron {
+        background: none;
+    }
+
+    #about .jumbotron {
+        color: white;
+        background: rgb(0, 0, 0) transparent;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -35px 0 0 -35px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nav-link::after {
+      border: 2px solid rgba(111,148,182,0.5);
+    }
+
+    .nav-link.click::after {
+      -webkit-animation: anim-effect-jelena 0.3s ease-out forwards;
+      animation: anim-effect-jelena 0.3s ease-out forwards;
+    }
+
+    @media (min-width: 992px) {
+      .logo {
+         width: 100%;
+      }
+    }
+
+    @-webkit-keyframes anim-effect-jelena {
+      0% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+      }
+      to {
+        opacity: 0;
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.2, 1.2, 1);
+      }
+    }
+
+    @keyframes anim-effect-jelena {
+      0% {
+        opacity: 1;
+        -webkit-transform: scale3d(0.5, 0.5, 1);
+        transform: scale3d(0.5, 0.5, 1);
+      }
+      to {
+        opacity: 0;
+        -webkit-transform: scale3d(1.2, 1.2, 1);
+        transform: scale3d(1.2, 1.2, 1);
+      }
+    }
+
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45858679-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-45858679-1');
+    </script>
+
+</head>
+<body>
+  <div id="navigation" class="card">
+      <div class="nav flex-column nav-pills" aria-orientation="vertical">
+          <a href="tel:+613 5232 2200" class="btn btn-secondary nav-link"><i class="fa fa-phone fa-2x" title="Call"></i></a>
+          <a class="nav-link text-danger" href="#intro"><i class="fa fa-home fa-2x" title="Home"></i></a>
+          <a class="nav-link text-danger" href="#products"><i class="fa fa-tag fa-2x" title="Products"></i></a>
+          <a class="nav-link text-danger" href="#about"><i class="fa fa-info-circle fa-2x" title="About Us"></i></a>
+          <a class="nav-link text-danger" href="#contact"><i class="fa fa-envelope fa-2x" title="Contact"></i></a>
+          <a class="nav-link text-danger" href="#map"><i class="fa fa-map-marker fa-2x" title="Location"></i></a>
+
+      </div>
+  </div>
+
+  <section id="intro">
+      <div class="container">
+        <img width="404" height="114" src="/images/logo.svg" alt="{{ site.title }}" class="img-fluid d-block logo" />
+      </div>
+
+  </section>
+
+  <section id="products">
+
+      <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <img width="680" height="453" src="/images/products.jpg" alt="{{ site.title }}" class="img-fluid mx-auto d-block rounded product" />
+            </div>
+          </div>
+      </div>
+
+  </section>
+
+  <section id="shavings">
+
+      <div class="container">
+        <div class="row">
+          <div class="col">
+                <div class="jumbotron lead">
+        <p>Superior Shavings commenced operation in 2002 and produce packaged pine woodshavings for use as a bedding litter for all types of animals.</p>
+        <p>Our shavings come from only kiln-dried radiata pine and hence have a very high absorbency rate. Our standard bale weighs approximately 14kg and provides approximately 0.18 cubic metres of uncompressed volume. </p>
+        <p>The woodshavings are a by-product from the timber milling process and have been kiln dried to achieve a moisture content of between 8% and 13%. The shavings do not have any additives and are screened prior to bagging, to remove the smaller dust particles. </p>
+        <p>Baled woodshavings are suitable for use as a bedding litter in stables, poultry nests and sheds, calf sheds and other types of animal enclosures.</p>
+
+                </div>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <section id="about" data-speed="6" data-type="background">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+           <div class="jumbotron lead">
+       <h1>About Us</h1>
+       <p>Superior Shavings is a privately owned business that commenced operation in 2002. Our main production facility is located in Tumut (NSW), in the foothills of the Snowy Mountains. </p>
+       <p>The sole business activity of Superior Shavings is the packaging and sale of kiln-dried pine woodshavings. All shavings go through a screening process to remove the smaller particles and sawdust, thus providing very good absorbency. </p>
+       <p>As our main customers are in the poultry, equine and cattle industries, we adhere to strict quarantine requirements to ensure the product remains clean and hygienic. </p>
+       <p>We have supplied our packaged shavings into every state of Australia. Please contact us to locate a stockist in your area.</p>
+           </div>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron">
+            <h1>Contact</h1>
+
+            <div class="row">
+              <div class="col-lg">
+
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="mailto:{{ 'jarrod@breederschoice.com.au' | encode_email }}"><i class="fa fa-at fa-lg" title="Email"></i> Email</a></li>
+                <li class="list-group-item"><a href="tel:+613 5232 2200"><i class="fa fa-phone fa-lg" title="Call"></i> +613 5232 2200</a></li>
+                <li class="list-group-item"><i class="fa fa-fax fa-lg" title="Fax"></i>  +613 5232 2270</li>
+              </ul>
+            </div>
+
+              </div><div class="col-lg">
+
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fa fa-envelope fa-lg" title="Mail"></i> Jarrod Hay, PO Box 530, Colac, VIC 3250 Australia</li>
+                <li class="list-group-item"><i class="fa fa-map-marker-alt fa-lg" title="Location"></i>  The Mill Industrial Estate, 21 Bond St, Holbrook, NSW 2644</li>
+              </ul>
+            </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.4883062785193!2d147.31092781575612!3d-35.71420758018661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b22484fabb0bff3%3A0x7e7dc85b6554617c!2sSuperior%20Shavings!5e0!3m2!1sen!2sau!4v1596004527722!5m2!1sen!2sau" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></iframe>
+  </section>
+
+  <section id="footer" class="text-right">
+    <a target="_blank" href="http://www.zackdesign.biz" class="badge badge-light">Website by Zack Design</a>
+  </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+
+          $window = $(window);
+          $('section[data-type="background"]').each(function(){
+              var $bgobj = $(this);
+              $(window).scroll(function() {
+                  var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+                  var coords = '50% ' + yPos + 'px';
+                  $bgobj.css({ backgroundPosition: coords });
+              });
+          })
+
+          // https://tympanus.net/codrops/2015/02/11/subtle-click-feedback-effects/
+          // Thank you!
+          $(".nav-link").click(function() {
+            $(this).addClass("click");
+            window.navigator.vibrate(200);
+
+            var remove = function(button) {
+              $(button).removeClass("click");
+            };
+
+            setTimeout(remove, 300, this);
+          });
+      });
+    </script>
+  </body>
+</html>
