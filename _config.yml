@@ -25,6 +25,8 @@ markdown: kramdown
 
 repository: zackdesign/zackdesign.github.io
 
+baseurl: /superiorshavings.github.io
+
 plugins:
   - jekyll-email-protect
 

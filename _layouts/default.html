@@ -25,8 +25,27 @@
       left: 5px;
     }
 
+    ul {
+      list-style-type: none;
+      diplay: flex;
+      flex-direction: row;
+      padding: 0;
+      margin: 0;
+      justify-content: space-between;
+      padding-bottom: 1em;
+    }
+    ul li::before {
+      content: "\f058";
+      font-family: "Font Awesome 5 Free";
+      padding: 0 10px 0 0;
+    }
+    ul li {
+      display: inline-block;
+      padding: 10px;
+    }
+
     #intro {
-        background: #FFFFFF url('/superiorshavings.github.io/images/shed.jpg') 50% 0 repeat;
+        background: #FFFFFF url('{{ site.baseurl }}/images/shed.jpg') 50% 0 repeat;
         height: 15em;
     }
     .logo {
@@ -34,7 +53,7 @@
        width: 80%;
     }
     #products {
-        background: #FFFFFF url('/superiorshavings.github.io/images/back2.jpg') 0% 10% repeat fixed;
+        background: #FFFFFF url('{{ site.baseurl }}/images/back2.jpg') 0% 10% repeat fixed;
     }
     .product {
       margin-top: -2em;
@@ -42,13 +61,13 @@
     }
 
     #shavings {
-        background: #c51f23 url('/superiorshavings.github.io/images/back3.jpg') 50% 50% repeat fixed;
+        background: #c51f23 url('{{ site.baseurl }}/images/back3.jpg') 50% 50% repeat fixed;
         padding-top: 20px;
         color: white;
     }
 
     #about {
-        background: #404040 url('/superiorshavings.github.io/images/back4.jpg') 50% 0 repeat fixed;
+        background: #404040 url('{{ site.baseurl }}/images/back4.jpg') 50% 0 repeat fixed;
         padding-top: 40px;
     }
 
@@ -61,7 +80,7 @@
     }
 
     #footer {
-        background: #404040 url('/superiorshavings.github.io/images/footer.jpg') top center;
+        background: #404040 url('{{ site.baseurl }}/images/footer.jpg') top center;
         height: 37px;
         border-bottom: 4px solid white;
     }
@@ -161,7 +180,7 @@
 
   <section id="intro">
       <div class="container">
-        <img width="404" height="114" src="/superiorshavings.github.io/images/logo.svg" alt="{{ site.title }}" class="img-fluid d-block logo" />
+        <img width="404" height="114" src="{{ site.baseurl }}/images/logo.svg" alt="{{ site.title }}" class="img-fluid d-block logo" />
       </div>
 
   </section>
@@ -171,7 +190,7 @@
       <div class="container">
           <div class="row justify-content-md-center">
             <div class="col-md-auto">
-                <img width="680" height="453" src="/superiorshavings.github.io/images/products.jpg" alt="{{ site.title }}" class="img-fluid mx-auto d-block rounded product" />
+                <img width="680" height="453" src="{{ site.baseurl }}/images/products.jpg" alt="{{ site.title }}" class="img-fluid mx-auto d-block rounded product" />
             </div>
           </div>
       </div>
@@ -183,13 +202,30 @@
       <div class="container">
         <div class="row">
           <div class="col">
-                <div class="jumbotron lead">
-        <p>Superior Shavings commenced operation in 2002 and produce packaged pine woodshavings for use as a bedding litter for all types of animals.</p>
-        <p>Our shavings come from only kiln-dried radiata pine and hence have a very high absorbency rate. Our standard bale weighs approximately 14kg and provides approximately 0.18 cubic metres of uncompressed volume. </p>
-        <p>The woodshavings are a by-product from the timber milling process and have been kiln dried to achieve a moisture content of between 8% and 13%. The shavings do not have any additives and are screened prior to bagging, to remove the smaller dust particles. </p>
-        <p>Baled woodshavings are suitable for use as a bedding litter in stables, poultry nests and sheds, calf sheds and other types of animal enclosures.</p>
+            <div class="jumbotron lead">
 
-                </div>
+              <ul>
+
+                 <li>Screened &amp; dust-extracted</li>
+
+
+                  <li>Kiln-dried for better absobency</li>
+
+
+                  <li>Clean &amp; hygienic</li>
+
+
+                  <li>All-natural product</li>
+
+              </ul>
+
+
+              <p>Superior Shavings commenced operation in 2002 and produce packaged pine woodshavings for use as a bedding litter for all types of animals.</p>
+              <p>Our shavings come from only kiln-dried radiata pine and hence have a very high absorbency rate. Our standard bale weighs approximately 14kg and provides approximately 0.18 cubic metres of uncompressed volume. </p>
+              <p>The woodshavings are a by-product from the timber milling process and have been kiln dried to achieve a moisture content of between 8% and 13%. The shavings do not have any additives.</p>
+              <p>Baled woodshavings are suitable for use as a bedding litter in stables, poultry nests and sheds, calf sheds and other types of animal enclosures.</p>
+
+            </div>
           </div>
         </div>
       </div>
