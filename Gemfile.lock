@@ -245,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   jekyll-email-protect
+  jekyll-seo-tag
   tzinfo-data
 
 BUNDLED WITH

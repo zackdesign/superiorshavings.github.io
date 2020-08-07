@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Superior Woodshavings | 03 5232 2200 | Screening &amp; Packaging of Pine Woodshavings to the Poultry Industry, Equine and Small Animal markets
+title: Screening & Packaging of Pine Woodshavings to the Poultry Industry, Equine and Small Animal markets
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Our baled woodshavings are suitable for commercial use in poultry nests and sheds, calf sheds, equine and small animal enclosures.
+  Our baled woodshavings are suitable for commercial use in poultry and chicken nests and sheds, calf sheds, equine and small animal enclosures.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -25,10 +25,11 @@ markdown: kramdown
 
 repository: zackdesign/zackdesign.github.io
 
-baseurl: /superiorshavings.github.io
+baseurl: /superiorshavings.github.io/
 
 plugins:
   - jekyll-email-protect
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
