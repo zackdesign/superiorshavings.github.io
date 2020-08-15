@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <script src="https://kit.fontawesome.com/17357694a0.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style type="text/css">
 
     #navigation {
@@ -61,6 +61,33 @@
         background: #c51f23 url('{{ site.baseurl }}/images/back3.jpg') 50% 50% repeat fixed;
         padding-top: 20px;
         color: white;
+    }
+
+    #stockists .header.jumbotron {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .stockists-list.invisible {
+      display: none;
+    }
+
+    #stockistsMap {
+      height: 600px;
+    }
+
+    #stockistsMap .card {
+      width: 18rem;
+      border: 0;
+    }
+
+    #stockistsMap .card-body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #stockistsList .card {
+      border: 1px;
     }
 
     #about {
@@ -154,13 +181,30 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45858679-1"></script>
     <script>
+      let stockists = [];
+      let map = {};
+      let autocomplete = undefined;
+      let place = undefined;
+      let radius = 10000;
+      let markers = [];
+      let infoWindows = [];
+      let stockistListContent = [];
+      let searchArea = undefined;
+
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'UA-45858679-1');
     </script>
-  {% seo %}
+    {% seo %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdShg_qm-ntKG78Q945VKor9WnKoX-lH8&callback=initGoogleAPI&libraries=geometry,places&v=weekly"
+        async
+        defer
+        type="text/javascript"
+      ></script>
 </head>
 <body>
   <div id="navigation" class="card">
@@ -168,9 +212,9 @@
           <a href="tel:+613 5232 2200" class="btn btn-secondary nav-link"><i class="fa fa-phone fa-2x" title="Call"></i></a>
           <a class="nav-link text-danger" href="#intro"><i class="fa fa-home fa-2x" title="Home"></i></a>
           <a class="nav-link text-danger" href="#products"><i class="fa fa-tag fa-2x" title="Products"></i></a>
+          <a class="nav-link text-danger" href="#stockists"><i class="fa fa-search fa-2x" title="Stockists"></i></a>
           <a class="nav-link text-danger" href="#about"><i class="fa fa-info-circle fa-2x" title="About Us"></i></a>
           <a class="nav-link text-danger" href="#contact"><i class="fa fa-envelope fa-2x" title="Contact"></i></a>
-          <a class="nav-link text-danger" href="#map"><i class="fa fa-map-marker fa-2x" title="Location"></i></a>
 
       </div>
   </div>
@@ -242,24 +286,85 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
 
   </section>
 
+  <section id="stockists">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="header jumbotron lead">
+            <h1>Stockists</h1>
+
+            <h4>Enter your location or suburb to find your closest Superior Shavings stockist.</h4>
+
+            <form>
+              <div class="row">
+                <div class="col col-12 col-md-5">
+                  <div class="input-group mb-2">
+                    <input type="search" class="form-control" id="location" placeholder="Enter your location">
+                    <div class="input-group-append">
+                      <div class="input-group-text"><i class="fas fa-crosshairs"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col col-12 col-md-5">
+                  <select id="search-radius" class="form-control" id="radius">
+                    <option value="10000">Within 10 km</option>
+                    <option value="25000">Within 25 km</option>
+                    <option value="50000">Within 50 km</option>
+                    <option value="100000">Within 100 km</option>
+                    <option value="250000">Within 250 km</option>
+                  </select>
+                </div>
+                <div class="col col-12 col-md-2 my-2 my-md-0">
+                  <div class="btn-group btn-group-toggle stockists-view" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                      <input type="radio" name="options" autocomplete="off" id="map" checked> <i class="fas fa-map-marker"></i>
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" autocomplete="off" id="list"> <i class="fas fa-list"></i>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="stockistsMap"></div>
+    <div id="stockistsList" class="stockists-list invisible">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="jumbotron">
+              <div class="no-results">There are currently no results. Try searching by location or increasing your search radius.</div>
+              <div class="container">
+                <div class="row results"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="about" data-speed="6" data-type="background">
       <div class="container">
         <div class="row">
           <div class="col">
            <div class="jumbotron lead">
-       <h1>About Us</h1>
-       <p>Superior Shavings is a privately owned business that commenced operation in 2002. The
-sole business activity of Superior Shavings is the packaging and sale of kiln-dried pine
-woodshavings. </p>
-       <p>In 2019, we relocated from Holbrook to Tumut (NSW). We are now located in the foothills
-of the Snowy Mountains and are onsite with our main supplier of the raw product. This
-reduces transportation costs and also ensures product quality, with the clean shavings
-transferred directly from the timber mill into our baling equipment.</p>
-       <p>As our main customers are in the poultry, equine and cattle industries, we adhere to strict
-quarantine requirements to ensure the product remains clean and hygienic.</p>
-       <p>We have supplied our packaged shavings into every state of Australia and our product is
-used extensively as bedding litter for chickens, horses and cattle breeders and enthusiasts.
-Please contact us to locate a stockist in your area.</p>
+            <h1>About Us</h1>
+            <p>Superior Shavings is a privately owned business that commenced operation in 2002. The
+            sole business activity of Superior Shavings is the packaging and sale of kiln-dried pine
+            woodshavings. </p>
+            <p>In 2019, we relocated from Holbrook to Tumut (NSW). We are now located in the foothills
+            of the Snowy Mountains and are onsite with our main supplier of the raw product. This
+            reduces transportation costs and also ensures product quality, with the clean shavings
+            transferred directly from the timber mill into our baling equipment.</p>
+            <p>As our main customers are in the poultry, equine and cattle industries, we adhere to strict
+            quarantine requirements to ensure the product remains clean and hygienic.</p>
+            <p>We have supplied our packaged shavings into every state of Australia and our product is
+            used extensively as bedding litter for chickens, horses and cattle breeders and enthusiasts.
+            Please contact us to locate a stockist in your area.</p>
            </div>
           </div>
         </div>
@@ -276,71 +381,183 @@ Please contact us to locate a stockist in your area.</p>
 
             <div class="row">
               <div class="col-lg">
-
-            <div class="card">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="mailto:{{ 'jarrod@breederschoice.com.au' | encode_email }}"><i class="fa fa-at fa-lg" title="Email"></i> Email</a></li>
-                <li class="list-group-item"><a href="tel:+613 5232 2200"><i class="fa fa-phone fa-lg" title="Call"></i> +613 5232 2200</a></li>
-                <li class="list-group-item"><i class="fa fa-fax fa-lg" title="Fax"></i>  +613 5232 2270</li>
-              </ul>
-            </div>
-
-              </div><div class="col-lg">
-
-            <div class="card">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fa fa-envelope fa-lg" title="Mail"></i> Jarrod Hay, PO Box 530, Colac, VIC 3250 Australia</li>
-                <li class="list-group-item"><i class="fa fa-map-marker-alt fa-lg" title="Location"></i>  Jepsen Ave, Tumut, NSW, 2720</li>
-              </ul>
-            </div>
-
-
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="mailto:{{ 'jarrod@breederschoice.com.au' | encode_email }}"><i class="fa fa-at fa-lg" title="Email"></i> Email</a></li>
+                    <li class="list-group-item"><a href="tel:+613 5232 2200"><i class="fa fa-phone fa-lg" title="Call"></i> +613 5232 2200</a></li>
+                    <li class="list-group-item"><i class="fa fa-fax fa-lg" title="Fax"></i>  +613 5232 2270</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg">
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-envelope fa-lg" title="Mail"></i> Jarrod Hay, PO Box 530, Colac, VIC 3250 Australia</li>
+                    <li class="list-group-item"><i class="fa fa-map-marker-alt fa-lg" title="Location"></i>  Jepsen Ave, Tumut, NSW, 2720</li>
+                  </ul>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3256.145500454479!2d148.19586801569142!3d-35.30236598028437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b181abcca9865d5%3A0x63e7e2ca77b4c978!2sJepsen%20Ave%2C%20Tumut%20NSW%202720!5e0!3m2!1sen!2sau!4v1596788383753!5m2!1sen!2sau" width="100%" height="500" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-  </section>
-
   <section id="footer" class="text-right">
     <a target="_blank" href="http://www.zackdesign.biz" class="badge badge-light">Website by Zack Design</a>
   </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
     <script type="text/javascript">
+      const searchMap = () => {
+        if (!place || !place.geometry) {
+          return;
+        }
+
+        resetMap();
+
+        const searchArea = new google.maps.Circle({
+          center: place.geometry.location,
+          radius,
+        });
+
+        markers.forEach((marker, index) => {
+
+          if (google.maps.geometry.spherical.computeDistanceBetween(
+            marker.getPosition(), searchArea.getCenter()
+          ) <= searchArea.getRadius()) {
+            marker.setVisible(true);
+            stockistListContent.push(infoWindows[index].getContent());
+          }
+
+        });
+
+        map.fitBounds(searchArea.getBounds());
+        updateStockistList();
+      };
+
+      let updateStockistList = () => {};
+
       jQuery(document).ready(function($) {
 
-          $window = $(window);
-          $('section[data-type="background"]').each(function(){
-              var $bgobj = $(this);
-              $(window).scroll(function() {
-                  var yPos = -($window.scrollTop() / $bgobj.data('speed'));
-                  var coords = '50% ' + yPos + 'px';
-                  $bgobj.css({ backgroundPosition: coords });
-              });
-          })
+        const populateMap = () => {
+          stockists.forEach((stockist) => {
+            const stockistLatLong = { lat: parseFloat(stockist.Latitude), lng: parseFloat(stockist.Longitude) };
+            const contentString = `
+              <div class="col col-md-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">${stockist.Customer}</h5>
+                    <p class="card-text">${stockist['Address 1']}<br />${stockist['Address 2']}</p>
+                    <a href="tel:${stockist.Phone}" class="btn btn-primary"><i class="fas fa-phone"></i> ${stockist.Phone}</a>
+                  </div>
+                </div>
+              </div>
+            `;
 
-          // https://tympanus.net/codrops/2015/02/11/subtle-click-feedback-effects/
-          // Thank you!
-          $(".nav-link").click(function() {
-            $(this).addClass("click");
-            window.navigator.vibrate(200);
+            const infoWindow = new google.maps.InfoWindow({
+              content: contentString,
+            });
 
-            var remove = function(button) {
-              $(button).removeClass("click");
-            };
+            const marker = new google.maps.Marker({
+              position: stockistLatLong,
+              map,
+              title: stockist.Customer,
+            });
 
-            setTimeout(remove, 300, this);
+            marker.addListener("click", () => {
+              infoWindow.open(map, marker);
+            });
+
+            infoWindows.push(infoWindow);
+            markers.push(marker);
           });
+        };
+
+        updateStockistList = () => {
+          if (stockistListContent.length) {
+            $('.no-results').hide();
+          } else {
+            $('.no-results').show();
+          }
+          $(`#stockistsList .results`).html(stockistListContent.join(""));
+        };
+
+        $.get("https://dl.dropbox.com/s/d8eqejkyb5xj1it/superior_shavings.csv", (data) => {
+          stockists = $.csv.toObjects(data);
+          populateMap();
+        });
+
+        $("#search-radius").on('change', function() {
+          radius = parseInt(this.value, 10);
+          searchMap();
+          updateStockistList();
+        });
+
+        $window = $(window);
+        $('section[data-type="background"]').each(function(){
+            var $bgobj = $(this);
+            $(window).scroll(function() {
+                var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+                var coords = '50% ' + yPos + 'px';
+                $bgobj.css({ backgroundPosition: coords });
+            });
+        });
+
+        $('.stockists-view input').click((event) => {
+          const type = event.target.id;
+          if (type === 'list') {
+            $(`#stockistsList`).show().removeClass('invisible');
+            $(`#stockistsMap`).hide().addClass('invisible');
+            updateStockistList();
+          } else {
+            $(`#stockistsList`).hide().addClass('invisible');
+            $(`#stockistsMap`).show().removeClass('invisible');
+            searchMap();
+          }
+        });
+
+        // https://tympanus.net/codrops/2015/02/11/subtle-click-feedback-effects/
+        // Thank you!
+        $(".nav-link").click(function() {
+          $(this).addClass("click");
+          window.navigator.vibrate(200);
+
+          var remove = function(button) {
+            $(button).removeClass("click");
+          };
+
+          setTimeout(remove, 300, this);
+        });
       });
+
+
+      const resetMap = () => {
+        markers.forEach((marker) => marker.setVisible(false));
+        infoWindows.forEach((iw) => iw.close());
+        stockistListContent = [];
+      };
+
+      function initGoogleAPI() {
+        const myLatLng = { lat: -25.363, lng: 131.044 };
+        map = new google.maps.Map(document.getElementById("stockistsMap"), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        const input = document.getElementById('location');
+        autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.setComponentRestrictions({ 'country': ['au'] });
+
+        autocomplete.addListener('place_changed', () => {
+          place = autocomplete.getPlace();
+          searchMap();
+        });
+      }
     </script>
   </body>
 </html>
