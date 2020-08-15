@@ -181,16 +181,6 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45858679-1"></script>
     <script>
-      let stockists = [];
-      let map = {};
-      let autocomplete = undefined;
-      let place = undefined;
-      let radius = 10000;
-      let markers = [];
-      let infoWindows = [];
-      let stockistListContent = [];
-      let searchArea = undefined;
-
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -314,7 +304,7 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
                     <option value="250000">Within 250 km</option>
                   </select>
                 </div>
-                <div class="col col-12 col-md-2 my-2 my-md-0">
+                <div class="col col-12 col-md-2 my-2 my-md-0 toggle-map-or-list invisible">
                   <div class="btn-group btn-group-toggle stockists-view" data-toggle="buttons">
                     <label class="btn btn-secondary active">
                       <input type="radio" name="options" autocomplete="off" id="map" checked> <i class="fas fa-map-marker"></i>
@@ -413,6 +403,19 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js" integrity="sha512-Y8iWYJDo6HiTo5xtml1g4QqHtl/PO1w+dmUpQfQSOTqKNsMhExfyPN2ncNAe9JuJUSKzwK/b6oaNPop4MXzkwg==" crossorigin="anonymous"></script>
     <script type="text/javascript">
+
+      let stockists = [];
+      let map = {};
+      let autocomplete = undefined;
+      let place = undefined;
+      let radius = 10000;
+      let markers = [];
+      let infoWindows = [];
+      let stockistListContent = [];
+      let searchArea = undefined;
+
+      let updateStockistList = () => {};
+
       const searchMap = () => {
         if (!place || !place.geometry) {
           return;
@@ -439,8 +442,6 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
         map.fitBounds(searchArea.getBounds());
         updateStockistList();
       };
-
-      let updateStockistList = () => {};
 
       jQuery(document).ready(function($) {
 
@@ -481,6 +482,7 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
         updateStockistList = () => {
           if (stockistListContent.length) {
             $('.no-results').hide();
+            $(".toggle-map-or-list").removeClass('invisible');
           } else {
             $('.no-results').show();
           }
