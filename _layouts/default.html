@@ -552,6 +552,7 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
         const input = document.getElementById('location');
         autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.setComponentRestrictions({ 'country': ['au'] });
+        autocomplete.setFields(['geometry.location']);
 
         autocomplete.addListener('place_changed', () => {
           place = autocomplete.getPlace();
