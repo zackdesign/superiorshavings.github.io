@@ -311,7 +311,6 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
         </div>
       </div>
     </div>
-    <div id="stockistsMap"></div>
     <div id="stockistsList" class="stockists-list invisible">
       <div class="container">
         <div class="row">
@@ -489,7 +488,9 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
 
         $.get("{{ site.stockistscsv }}", (data) => {
           stockists = $.csv.toObjects(data);
-          populateMap();
+          if (document.getElementById("stockistsMap")) {
+            populateMap();
+          }
         });
 
         $("#search-radius").on('change', function() {
@@ -533,8 +534,25 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
 
           setTimeout(remove, 300, this);
         });
-      });
 
+        // Ensuring we don't load a map until we need to
+        // because otherwise it costs money
+        $window.scroll(() => {
+          const top_of_element = $("#stockists").offset().top;
+          const bottom_of_element = $("#stockists").offset().top + $("#stockists").outerHeight();
+          const bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+          const top_of_screen = $(window).scrollTop();
+
+          if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element) && !$("#stockistsMap").length){
+            $("<div id='stockistsMap'></div>").insertAfter("#stockists .container");
+
+            if (typeof(google) !== undefined) {
+              initGoogleAPI();
+              populateMap();
+            }
+          }
+        });
+      });
 
       const resetMap = () => {
         markers.forEach((marker) => marker.setVisible(false));
@@ -543,21 +561,23 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
       };
 
       function initGoogleAPI() {
-        const myLatLng = { lat: -25.363, lng: 131.044 };
-        map = new google.maps.Map(document.getElementById("stockistsMap"), {
-          zoom: 4,
-          center: myLatLng
-        });
+        if (document.getElementById("stockistsMap")) {
+          const myLatLng = { lat: -25.363, lng: 131.044 };
+          map = new google.maps.Map(document.getElementById("stockistsMap"), {
+            zoom: 4,
+            center: myLatLng
+          });
 
-        const input = document.getElementById('location');
-        autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.setComponentRestrictions({ 'country': ['au'] });
-        autocomplete.setFields(['geometry.location']);
+          const input = document.getElementById('location');
+          autocomplete = new google.maps.places.Autocomplete(input);
+          autocomplete.setComponentRestrictions({ 'country': ['au'] });
+          autocomplete.setFields(['geometry.location']);
 
-        autocomplete.addListener('place_changed', () => {
-          place = autocomplete.getPlace();
-          searchMap();
-        });
+          autocomplete.addListener('place_changed', () => {
+            place = autocomplete.getPlace();
+            searchMap();
+          });
+        }
       }
     </script>
   </body>
