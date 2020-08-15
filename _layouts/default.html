@@ -285,37 +285,35 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
 
             <h4>Enter your location or suburb to find your closest Superior Shavings stockist.</h4>
 
-            <form>
-              <div class="row">
-                <div class="col col-12 col-md-5">
-                  <div class="input-group mb-2">
-                    <input type="search" class="form-control" id="location" placeholder="Enter your location">
-                    <div class="input-group-append">
-                      <div class="input-group-text"><i class="fas fa-crosshairs"></i></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col col-12 col-md-5">
-                  <select id="search-radius" class="form-control" id="radius">
-                    <option value="10000">Within 10 km</option>
-                    <option value="25000">Within 25 km</option>
-                    <option value="50000">Within 50 km</option>
-                    <option value="100000">Within 100 km</option>
-                    <option value="250000">Within 250 km</option>
-                  </select>
-                </div>
-                <div class="col col-12 col-md-2 my-2 my-md-0 toggle-map-or-list invisible">
-                  <div class="btn-group btn-group-toggle stockists-view" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                      <input type="radio" name="options" autocomplete="off" id="map" checked> <i class="fas fa-map-marker"></i>
-                    </label>
-                    <label class="btn btn-secondary">
-                      <input type="radio" name="options" autocomplete="off" id="list"> <i class="fas fa-list"></i>
-                    </label>
+            <div class="row">
+              <div class="col col-12 col-md-5">
+                <div class="input-group mb-2">
+                  <input type="search" class="form-control" id="location" placeholder="Enter your location">
+                  <div class="input-group-append">
+                    <div class="input-group-text"><i class="fas fa-crosshairs"></i></div>
                   </div>
                 </div>
               </div>
-            </form>
+              <div class="col col-12 col-md-5">
+                <select id="search-radius" class="form-control" id="radius">
+                  <option value="10000">Within 10 km</option>
+                  <option value="25000">Within 25 km</option>
+                  <option value="50000">Within 50 km</option>
+                  <option value="100000">Within 100 km</option>
+                  <option value="250000">Within 250 km</option>
+                </select>
+              </div>
+              <div class="col col-12 col-md-2 my-2 my-md-0 toggle-map-or-list invisible">
+                <div class="btn-group btn-group-toggle stockists-view" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="options" autocomplete="off" id="map" checked> <i class="fas fa-map-marker"></i>
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" autocomplete="off" id="list"> <i class="fas fa-list"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
