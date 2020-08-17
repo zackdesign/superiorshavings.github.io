@@ -270,7 +270,7 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
   </section>
 
   <section id="stockists">
-    <div class="container">
+    <div class="form container">
       <div class="row">
         <div class="col">
           <div class="header jumbotron lead">
@@ -544,7 +544,7 @@ and by doing so eliminates risk of contaminants in our shavings.</p>
           const top_of_screen = $(window).scrollTop();
 
           if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element) && !$("#stockistsMap").length){
-            $("<div id='stockistsMap'></div>").insertAfter("#stockists .container");
+            $("<div id='stockistsMap'></div>").insertAfter("#stockists .form.container");
 
             if (typeof(google) !== undefined) {
               initGoogleAPI();
