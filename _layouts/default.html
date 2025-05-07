@@ -185,15 +185,15 @@
     .stockist-card {
       border-radius: 10px;
       overflow: hidden;
-      transition: var(--transition);
+      /* Simplified transition for better mobile performance */
       margin-bottom: 20px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
       border: none !important;
     }
     
     .stockist-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      /* Simplified hover effect for better mobile performance */
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     }
     
     .stockist-card .card-title {
@@ -341,21 +341,7 @@
       }
     }
     
-    /* Stockist Cards Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 20px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-
-    .card-animate {
-      animation: fadeInUp 0.5s ease-out forwards;
-    }
+    /* Stockist Cards Animation - Removed for better mobile performance */
     
     /* Map/List toggle styling improvements */
     .stockists-view .btn-outline-primary {
@@ -935,13 +921,8 @@ dried to achieve an optimal moisture content between 8% and 13%, providing excep
         // Update the HTML with stockist cards
         $(`#stockistsList .results`).html(stockistListContent.join(""));
         
-        // Add animation with staggered delay
-        $('.stockist-card').each(function(index) {
-          const $card = $(this);
-          setTimeout(function() {
-            $card.addClass('card-animate');
-          }, index * 100);
-        });
+        // Remove animations for better mobile performance
+        // No longer adding card-animate class or staggered delay
       } else {
         $('.no-results').show();
       }
