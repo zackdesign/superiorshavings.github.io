@@ -13,24 +13,48 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Screening & Packaging of Pine Woodshavings to the Poultry Industry, Equine and Small Animal markets
-email: your-email@example.com
+title: "Superior Shavings - Premium Kiln-Dried Pine Woodshavings for Poultry, Horses & Small Animals"
+email: jarrod@breederschoice.com.au
 description: >- # this means to ignore newlines until "baseurl:"
-  Our baled woodshavings are suitable for commercial use in poultry and chicken nests and sheds, calf sheds, equine and small animal enclosures.
+  Premium kiln-dried pine woodshavings for horse bedding, poultry litter, and small animal bedding. 
+  High-absorbency, dust-extracted, all-natural animal bedding manufactured in Australia.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://superiorshavings.github.io" # the base hostname & protocol for your site
+logo: "/images/logo.svg"
+
+# SEO specific settings
+author: Superior Shavings
+twitter:
+  username: SuperiorShavings
+  card: summary_large_image
+facebook:
+  publisher: superiorshavings
+social:
+  name: Superior Shavings
+  links:
+    - https://twitter.com/SuperiorShavings
+    - https://facebook.com/superiorshavings
+
+# Keywords for SEO
+keywords:
+  pine shavings, horse bedding, poultry bedding, animal bedding, kiln dried shavings,
+  dust extracted shavings, pine woodshavings, equine bedding, chicken litter,
+  small animal bedding, livestock bedding, absorbent bedding, stable bedding,
+  bulk animal bedding, premium wood shavings
+
+lang: en_AU
+locale: en_AU
 
 stockistscsv: https://dl.dropbox.com/s/c4rl2z56dkohbzg/superior_shavings.csv
 
 # Build settings
 markdown: kramdown
 
-repository: zackdesign/zackdesign.github.io
+repository: superiorshavings/superiorshavings.github.io
 
 plugins:
   - jekyll-email-protect
   - jekyll-seo-tag
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
