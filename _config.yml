@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Premium kiln-dried pine woodshavings for horse bedding, poultry litter, and small animal bedding. 
   High-absorbency, dust-extracted, all-natural animal bedding manufactured in Australia.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://superiorshavings.github.io" # the base hostname & protocol for your site
+url: "https://superiorshavings.com.au" # the base hostname & protocol for your site
 logo: "/images/logo.svg"
 
 # SEO specific settings
@@ -55,6 +55,7 @@ repository: superiorshavings/superiorshavings.github.io
 plugins:
   - jekyll-email-protect
   - jekyll-seo-tag
+  - jekyll-sitemap
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
