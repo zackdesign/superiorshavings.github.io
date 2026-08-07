@@ -238,10 +238,18 @@ p:last-child { margin-bottom: 0; }
 .ticket__key { text-transform: uppercase; letter-spacing: 0.12em; color: var(--mute); }
 .ticket__val { text-align: right; }
 
-/* The product itself — the client's own bale-stack photo (680px native,
-   so it displays at natural size rather than stretching to the shell) */
-.prodshot { margin: 2.5rem 0 0; max-width: 42.5rem; }
+/* The product itself — the client's own bale-stack photo, run as a right
+   column beside the cards at desktop, first in flow on mobile */
+.prodgrid { display: grid; gap: clamp(1.5rem, 1rem + 2vw, 2.5rem); align-items: start; margin-top: 2.5rem; }
+@media (min-width: 60rem) {
+  .prodgrid { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+  .prodgrid .cards { grid-column: 1; grid-row: 1; }
+  .prodgrid .prodshot { grid-column: 2; grid-row: 1; position: sticky; top: 6rem; }
+}
+.prodgrid .cards { margin-top: 0; }
+.prodshot { margin: 0; }
 .prodshot img {
+  width: 100%;
   border-radius: var(--radius);
   box-shadow: 0 20px 40px -24px rgba(31, 34, 36, 0.5);
 }
@@ -250,6 +258,21 @@ p:last-child { margin-bottom: 0; }
   font: 500 var(--step--1) / 1.5 var(--mono);
   text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--mute);
+}
+
+/* Texture from the client's own library (files already on the live domain).
+   Heavy washes keep every band at its original text contrast. */
+.handsband { margin: 0; }
+.handsband img { width: 100%; height: clamp(160px, 22vw, 300px); object-fit: cover; display: block; }
+#uses.band {
+  background:
+    linear-gradient(rgba(240, 238, 234, 0.94), rgba(240, 238, 234, 0.94)),
+    url('/images/back4.jpg') center/cover;
+}
+#trade.band--iron {
+  background:
+    linear-gradient(rgba(31, 34, 36, 0.92), rgba(31, 34, 36, 0.94)),
+    url('/images/back2.jpg') center/cover;
 }
 
 /* Cards */
