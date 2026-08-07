@@ -1,0 +1,196 @@
+---
+layout: base
+---
+{%- assign tel = site.phone_intl | remove: ' ' -%}
+{%- assign pfx = page.url | replace: 'index.html', '' | split: '#' | first -%}
+
+<!-- Hero: the product, not the logo ---------------------------------------->
+<section class="hero">
+  <div class="hero__media">
+    <img src="{{ '/images/site/texture.jpg' | relative_url }}"
+         srcset="{{ '/images/site/texture-1100.jpg' | relative_url }} 1100w, {{ '/images/site/texture.jpg' | relative_url }} 2200w"
+         sizes="100vw" width="2200" height="900" fetchpriority="high" decoding="async"
+         alt="Pale kiln-dried pine shavings, close up">
+  </div>
+  <div class="shell hero__inner">
+    <p class="hero__eyebrow">Tumut NSW · Est. 2002</p>
+    <h1 class="hero__title">Pine shavings, baled <em>at the source</em></h1>
+    <p class="hero__lede">
+      Kiln-dried radiata pine, screened and dust-extracted, pressed into 14kg
+      bales in the Snowy Mountains foothills — and stocked by produce stores
+      and pet retailers in every state of Australia.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="{{ page.stockists_index | default: '/stockists/' | relative_url }}">
+        Find a stockist {% include icon.html name="arrow" %}
+      </a>
+      <a class="btn btn--ghost" href="#trade">Trade &amp; bulk enquiries</a>
+    </div>
+
+    <!-- Bale ticket: the spec, as printed on the bale -->
+    <div class="ticket" role="group" aria-label="Bale specifications">
+      <div class="ticket__row"><span class="ticket__key">Bale</span><span class="ticket__val">{{ site.bale_weight }} compressed</span></div>
+      <div class="ticket__row"><span class="ticket__key">Volume</span><span class="ticket__val">{{ site.bale_volume }}</span></div>
+      <div class="ticket__row"><span class="ticket__key">Moisture</span><span class="ticket__val">Kiln-dried to {{ site.moisture }}</span></div>
+      <div class="ticket__row"><span class="ticket__key">Additives</span><span class="ticket__val">None — 100% pine</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Product ----------------------------------------------------------------->
+<section class="band" id="product">
+  <div class="shell">
+    <p class="eyebrow">The product</p>
+    <h2 class="section-title">One product, done properly</h2>
+    <p class="section-lede">
+      We do one thing: premium pine shavings for animal bedding. Every bale is
+      kiln-dried, screened and dust-extracted before it's pressed.
+    </p>
+
+    <div class="cards">
+      <article class="card" data-reveal>
+        <h3>Kiln-dried for absorbency</h3>
+        <p>
+          Shavings are kiln-dried to a moisture content of {{ site.moisture }} —
+          dry enough to soak up what your animals leave behind, which keeps
+          stables and sheds drier for longer between changes.
+        </p>
+      </article>
+      <article class="card" data-reveal>
+        <h3>Screened &amp; dust-extracted</h3>
+        <p>
+          Fine dust and sawdust are screened out before baling. Veterinary
+          guidance recommends low-dust bedding for horses with respiratory
+          sensitivities, and less dust means a cleaner shed for poultry too.
+        </p>
+      </article>
+      <article class="card" data-reveal>
+        <h3>100% natural pine</h3>
+        <p>
+          No chemical additives — just radiata pine shavings from kiln-dried
+          timber. Safe for horses, poultry, and small animals from rats and
+          rabbits to reptiles.
+        </p>
+      </article>
+      <article class="card" data-reveal>
+        <h3>Handled once</h3>
+        <p>
+          Our Tumut plant sits in the heart of NSW softwood country. Shavings
+          go from the mill into our baler with minimal handling — fewer steps
+          between the saw and your shed.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Process: a real sequence ------------------------------------------------>
+<section class="band band--iron" id="process">
+  <div class="shell">
+    <p class="eyebrow eyebrow--iron">How it's made</p>
+    <h2 class="section-title">From the saw to the shed</h2>
+    <ol class="millline">
+      <li class="millline__step" data-reveal>
+        <span class="millline__num">01</span>
+        <h3>Sawmill</h3>
+        <p>Shavings are a by-product of milling kiln-dried radiata pine — timber that's already been dried for structural use.</p>
+      </li>
+      <li class="millline__step" data-reveal>
+        <span class="millline__num">02</span>
+        <h3>Screen</h3>
+        <p>A rotary screen separates out sawdust and fines, leaving only the coarse, absorbent curl.</p>
+      </li>
+      <li class="millline__step" data-reveal>
+        <span class="millline__num">03</span>
+        <h3>Dust extraction</h3>
+        <p>Airborne dust is extracted before baling — what's left is the bedding, not the by-product of the by-product.</p>
+      </li>
+      <li class="millline__step" data-reveal>
+        <span class="millline__num">04</span>
+        <h3>Bale press</h3>
+        <p>Pressed into {{ site.bale_weight }} poly-wrapped bales that expand to {{ site.bale_volume }} — dense to freight, easy to store.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Who it's for ------------------------------------------------------------>
+<section class="band" id="uses">
+  <div class="shell">
+    <p class="eyebrow">Who it's for</p>
+    <h2 class="section-title">Stables, sheds and hutches</h2>
+    <div class="uses">
+      <figure class="use" data-reveal>
+        <img src="{{ '/images/site/stable.jpg' | relative_url }}" alt="A horse looking out over a stable door" loading="lazy" decoding="async" width="1400" height="659">
+        <figcaption>
+          <h3>Equine</h3>
+          <p>Low-dust bedding for stables and floats — comfortable underfoot, quick to muck out, kind on airways.</p>
+        </figcaption>
+      </figure>
+      <figure class="use" data-reveal>
+        <img src="{{ '/images/site/chooks.jpg' | relative_url }}" alt="Hens on the floor of an open shed" loading="lazy" decoding="async" width="1400" height="933">
+        <figcaption>
+          <h3>Poultry</h3>
+          <p>Dry, absorbent litter for coops, nesting boxes and sheds — from six chooks in the backyard to commercial operations.</p>
+        </figcaption>
+      </figure>
+      <figure class="use use--text" data-reveal>
+        <figcaption>
+          <h3>Small animals</h3>
+          <p>Rabbits, guinea pigs, rats and reptiles — a natural, additive-free substrate sold through pet retailers nationally.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Trade ------------------------------------------------------------------->
+<section class="band band--iron" id="trade">
+  <div class="shell trade">
+    <div>
+      <p class="eyebrow eyebrow--iron">Trade &amp; bulk</p>
+      <h2 class="section-title">By the bale, the pallet, or the truckload</h2>
+      <p class="section-lede section-lede--iron">
+        We supply produce stores, saddleries, pet retailers, studs and poultry
+        operations across Australia — including through the AIRR national
+        rural retail network. Ring us about pallet quantities, mixed loads and
+        becoming a stockist.
+      </p>
+    </div>
+    <div class="trade__actions">
+      <a class="btn btn--primary" href="tel:{{ tel }}">{% include icon.html name="phone" %} {{ site.phone }}</a>
+      <a class="btn btn--ghost" href="mailto:{{ site.email | encode_email }}?subject=Trade%20enquiry%20%E2%80%94%20Superior%20Shavings">{% include icon.html name="mail" %} Email a trade enquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- Story ------------------------------------------------------------------->
+<section class="band" id="story">
+  <div class="shell story">
+    <div class="story__text">
+      <p class="eyebrow">Since 2002</p>
+      <h2 class="section-title">Holbrook to Tumut</h2>
+      <p>
+        Superior Shavings started baling at the Mill Industrial Estate in
+        Holbrook, NSW in 2002. In 2019 we moved the plant to Tumut, in the
+        foothills of the Snowy Mountains — one of the biggest softwood milling
+        regions in the country — to be closer to the timber.
+      </p>
+      <p>
+        Today we're part of the <strong>Breeder's Choice Woodshavings</strong>
+        family, alongside our sister plant in Colac, Victoria. Two plants,
+        two states, the same standard: kiln-dried, screened, dust-extracted
+        pine — and nothing else.
+      </p>
+      <p>
+        <a class="story__link" href="{{ site.sister_url }}" rel="noopener">
+          In Victoria? Meet Breeder's Choice {% include icon.html name="arrow" %}
+        </a>
+      </p>
+    </div>
+    <img class="story__img" src="{{ '/images/site/bench.jpg' | relative_url }}"
+         srcset="{{ '/images/site/bench-1100.jpg' | relative_url }} 1100w, {{ '/images/site/bench.jpg' | relative_url }} 2200w"
+         sizes="(min-width: 60rem) 50vw, 100vw"
+         alt="Fresh pine shavings beside woodworking tools on a bench" loading="lazy" decoding="async" width="2200" height="900">
+  </div>
+</section>

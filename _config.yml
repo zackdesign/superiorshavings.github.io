@@ -1,69 +1,57 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Superior Shavings — part of Breeder's Choice Woodshavings Pty Ltd
+title: "Superior Shavings"
+tagline: "Kiln-dried pine woodshavings, baled at the source in Tumut NSW"
+description: >
+  Premium kiln-dried pine woodshavings for horse stables, poultry sheds and
+  small-animal bedding. Screened and dust-extracted, baled at the source in
+  Tumut NSW, and stocked by produce stores and pet retailers in every state
+  of Australia.
+url: "https://superiorshavings.com.au"
+baseurl: ""
+lang: en-AU
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: "Superior Shavings - Premium Kiln-Dried Pine Woodshavings for Poultry, Horses & Small Animals"
+# Contact — one business, two plants. Sales run through the Colac office.
 email: jarrod@breederschoice.com.au
-description: >- # this means to ignore newlines until "baseurl:"
-  Premium kiln-dried pine woodshavings for horse bedding, poultry litter, and small animal bedding. 
-  High-absorbency, dust-extracted, all-natural animal bedding manufactured in Australia.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://superiorshavings.com.au" # the base hostname & protocol for your site
-logo: "/images/logo.svg"
+phone: "(03) 5232 2200"
+phone_intl: "+61 3 5232 2200"
+address_physical: "Jepsen Avenue, Tumut, NSW 2720"
+address_postal: "PO Box 530, Colac, VIC 3250"
+latitude: -35.3024
+longitude: 148.1985
 
-# SEO specific settings
+# Family of brands
+parent_name: "Breeder's Choice Woodshavings Pty Ltd"
+parent_abn: "64 118 468 223"
+sister_url: "https://breederschoice.com.au"
+sister_name: "Breeder's Choice Woodshavings"
+facebook_url: "https://www.facebook.com/superior.shavings/"
+
+# Product facts (verified against retailer listings and their own spec)
+bale_weight: "14kg"
+bale_volume: "approx. 0.18 m³ uncompressed"
+moisture: "8–13%"
+
+# Stockists — live CSV maintained by the owner in Dropbox. Fetched at runtime
+# in the browser (NOT at build time) so updates go live without a deploy.
+stockists_csv: "https://dl.dropboxusercontent.com/s/c4rl2z56dkohbzg/superior_shavings.csv"
+maps_api_key: ""
+
 author: Superior Shavings
-twitter:
-  username: SuperiorShavings
-  card: summary_large_image
-facebook:
-  publisher: superiorshavings
-social:
-  name: Superior Shavings
-  links:
-    - https://twitter.com/SuperiorShavings
-    - https://facebook.com/superiorshavings
+google_analytics: "G-JXGW730H2Z"
 
-# Keywords for SEO
-keywords:
-  pine shavings, horse bedding, poultry bedding, animal bedding, kiln dried shavings,
-  dust extracted shavings, pine woodshavings, equine bedding, chicken litter,
-  small animal bedding, livestock bedding, absorbent bedding, stable bedding,
-  bulk animal bedding, premium wood shavings
-
-lang: en_AU
-locale: en_AU
-
-stockistscsv: https://dl.dropbox.com/s/c4rl2z56dkohbzg/superior_shavings.csv
-
-# Build settings
 markdown: kramdown
-
-repository: superiorshavings/superiorshavings.github.io
-
 plugins:
-  - jekyll-email-protect
   - jekyll-seo-tag
   - jekyll-sitemap
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  - jekyll-email-protect
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+
+defaults:
+  - scope: { path: "" }
+    values:
+      image: /images/og.jpg

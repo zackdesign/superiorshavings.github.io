@@ -1,0 +1,44 @@
+{%- assign home = page.home_url | default: '/' -%}
+{%- assign stk = page.stockists_index | default: home | append: 'stockists/' -%}
+<header class="header">
+  <div class="shell header__inner">
+    <a class="wordmark" href="{{ home | relative_url }}">
+      <img src="{{ '/images/logo.svg' | relative_url }}" alt="Superior Shavings" width="150" height="46">
+    </a>
+
+    <nav class="nav" aria-label="Sections">
+      <a href="{{ home | append: '#product' | relative_url }}">The product</a>
+      <a href="{{ home | append: '#process' | relative_url }}">How it's made</a>
+      <a href="{{ stk | relative_url }}">Stockists</a>
+      <a href="{{ home | append: '#trade' | relative_url }}">Trade &amp; bulk</a>
+      <a href="{{ home | append: '#contact' | relative_url }}">Contact</a>
+    </nav>
+
+    <details class="mobnav">
+      <summary class="mobnav__toggle" aria-label="Menu">
+        <span class="mobnav__icon mobnav__icon--open">{% include icon.html name="menu" %}</span>
+        <span class="mobnav__icon mobnav__icon--close">{% include icon.html name="close" %}</span>
+      </summary>
+      <div class="mobnav__panel">
+        <nav class="mobnav__links" aria-label="Menu">
+          <a href="{{ home | append: '#product' | relative_url }}">The product</a>
+          <a href="{{ home | append: '#process' | relative_url }}">How it's made</a>
+          <a href="{{ stk | relative_url }}">Find a stockist</a>
+          <a href="{{ home | append: '#trade' | relative_url }}">Trade &amp; bulk</a>
+          <a href="{{ home | append: '#contact' | relative_url }}">Contact</a>
+        </nav>
+        <a class="mobnav__call btn btn--primary" href="tel:{{ site.phone_intl | remove: ' ' }}">
+          {% include icon.html name="phone" %} Call {{ site.phone }}
+        </a>
+      </div>
+    </details>
+
+    <div class="header__actions">
+      <a class="btn btn--primary" href="tel:{{ site.phone_intl | remove: ' ' }}">
+        {% include icon.html name="phone" %}
+        <span class="header__phone-label">{{ site.phone }}</span>
+        <span class="visually-hidden">Call Superior Shavings on {{ site.phone }}</span>
+      </a>
+    </div>
+  </div>
+</header>

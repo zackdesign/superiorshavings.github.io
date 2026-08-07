@@ -1,0 +1,24 @@
+- code: vic
+  abbr: VIC
+  name: Victoria
+- code: nsw
+  abbr: NSW
+  name: New South Wales
+- code: qld
+  abbr: QLD
+  name: Queensland
+- code: sa
+  abbr: SA
+  name: South Australia
+- code: wa
+  abbr: WA
+  name: Western Australia
+- code: tas
+  abbr: TAS
+  name: Tasmania
+- code: nt
+  abbr: NT
+  name: Northern Territory
+- code: act
+  abbr: ACT
+  name: Australian Capital Territory

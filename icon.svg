@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Superior Shavings">
+  <title>Superior Shavings</title>
+  <!-- The brand mark: the offset bale square from the logo, #BF2025. -->
+  <rect width="512" height="512" rx="72" fill="#BF2025"/>
+  <rect x="64" y="64" width="288" height="312" fill="#FFFFFF"/>
+</svg>

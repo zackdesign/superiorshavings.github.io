@@ -1,0 +1,56 @@
+{%- assign home = page.home_url | default: '/' -%}
+{%- assign stk = page.stockists_index | default: home | append: 'stockists/' -%}
+{%- assign tel = site.phone_intl | remove: ' ' -%}
+<footer class="footer" id="contact">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <h2>Superior Shavings</h2>
+        <p>
+          Kiln-dried pine woodshavings, screened, dust-extracted and baled at
+          the source in Tumut, NSW. Part of the
+          <a href="{{ site.sister_url }}" rel="noopener">Breeder's Choice Woodshavings</a> family.
+        </p>
+      </div>
+
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="tel:{{ tel }}">{{ site.phone }}</a></li>
+          <li><a href="mailto:{{ site.email | encode_email }}">Email us</a></li>
+          <li>{{ site.address_physical }}</li>
+          <li>Post: {{ site.address_postal }}</li>
+          <li><a href="{{ site.facebook_url }}" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Stockists</h2>
+        <ul>
+          <li><a href="{{ stk | relative_url }}">Find your nearest stockist</a></li>
+          {% for st in site.data.states limit: 4 %}
+            <li><a href="{{ stk | append: st.code | append: '/' | relative_url }}">{{ st.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h2>The family</h2>
+        <ul>
+          <li><a href="{{ site.sister_url }}" rel="noopener">Breeder's Choice — Colac VIC</a></li>
+          <li>Superior Shavings — Tumut NSW</li>
+        </ul>
+        <p class="footer__note">
+          In Victoria? Our Colac plant bales
+          <a href="{{ site.sister_url }}" rel="noopener">Breeder's Choice</a> —
+          same standard, closer to you.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer__meta">
+      <span>&copy; {{ 'now' | date: "%Y" }} {{ site.parent_name }} · ABN {{ site.parent_abn }}</span>
+      <a href="https://zackdesign.biz">Site by Zack Design</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,53 @@
+{%- comment -%}
+One business, two plants: Breeder's Choice Woodshavings Pty Ltd (parent
+Organization, Colac VIC) operates the Superior Shavings brand and plant at
+Tumut NSW. Distinct @ids stop Google conflating the two sites, which share a
+phone number and postal address. The range is an OfferCatalog, NOT Product
+entities — Product markup without offers/review/aggregateRating is a Search
+Console critical error (learned on mowercorner and acparts).
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.sister_url }}/#org",
+      "name": "{{ site.parent_name }}",
+      "url": "{{ site.sister_url }}",
+      "identifier": "ABN {{ site.parent_abn }}"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "{{ site.url }}/#business",
+      "name": "Superior Shavings",
+      "parentOrganization": { "@id": "{{ site.sister_url }}/#org" },
+      "brand": { "@type": "Brand", "name": "Superior Shavings" },
+      "url": "{{ site.url }}",
+      "image": "{{ site.url }}/icon-512.png",
+      "telephone": "{{ site.phone_intl }}",
+      "email": "{{ site.email }}",
+      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jepsen Avenue",
+        "addressLocality": "Tumut",
+        "addressRegion": "NSW",
+        "postalCode": "2720",
+        "addressCountry": "AU"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": {{ site.latitude }}, "longitude": {{ site.longitude }} },
+      "areaServed": { "@type": "Country", "name": "Australia" },
+      "sameAs": ["{{ site.facebook_url }}"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pine woodshavings animal bedding",
+        "itemListElement": [
+          { "@type": "OfferCatalog", "name": "14kg compressed bales", "description": "Kiln-dried, screened and dust-extracted pine shavings — approx. 0.18 m³ uncompressed per bale." },
+          { "@type": "OfferCatalog", "name": "Pallet and bulk supply", "description": "Pallet quantities for produce stores, studs and poultry operations." }
+        ]
+      }
+    }
+  ]
+}
+</script>

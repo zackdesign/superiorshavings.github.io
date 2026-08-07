@@ -1,0 +1,75 @@
+---
+layout: base
+---
+{%- assign tel = site.phone_intl | remove: ' ' -%}
+
+<section class="page-head">
+  <div class="shell">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="{{ page.home_url | default: '/' | relative_url }}">Superior Shavings</a>
+      <span aria-hidden="true">/</span>
+      {% if page.state_abbr %}
+        <a href="{{ page.stockists_index | default: '/stockists/' | relative_url }}">Stockists</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{{ page.state_name }}</span>
+      {% else %}
+        <span aria-current="page">Stockists</span>
+      {% endif %}
+    </nav>
+    <h1>{{ page.h1 | default: page.title }}</h1>
+    <p class="page-head__lede">{{ page.lede }}</p>
+  </div>
+</section>
+
+<section class="band band--tight">
+  <div class="shell">
+    <div class="stk"
+         data-csv="{{ site.stockists_csv }}"
+         data-state="{{ page.state_abbr | default: '' }}"
+         data-maps-key="{{ site.maps_api_key }}">
+
+      <form class="stk__controls" role="search" aria-label="Filter stockists">
+        <label class="visually-hidden" for="stk-q">Filter by town, postcode or store name</label>
+        <input id="stk-q" class="stk__input" type="search"
+               placeholder="Filter by town, postcode or store name…" autocomplete="off">
+        <span class="stk__count" data-stk-count aria-live="polite"></span>
+      </form>
+
+      <div class="stk__map" data-stk-map hidden aria-hidden="true"></div>
+
+      <div class="stk__status" data-stk-status>
+        <noscript>
+          The stockist list needs JavaScript to load. Ring us on
+          <a href="tel:{{ tel }}">{{ site.phone }}</a> and we'll point you to
+          your nearest stockist.
+        </noscript>
+      </div>
+
+      <ol class="stk__list" data-stk-list></ol>
+    </div>
+
+    {% unless page.state_abbr %}
+      <nav class="stk__states" aria-label="Stockists by state">
+        <p class="eyebrow">By state</p>
+        <ul>
+          {% for st in site.data.states %}
+            <li><a href="{{ page.url | append: st.code | append: '/' | relative_url }}">{{ st.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endunless %}
+
+    <aside class="stk__becoming">
+      <h2>Become a stockist</h2>
+      <p>
+        We supply produce stores, saddleries and pet retailers in every state,
+        including through the AIRR network. Ring
+        <a href="tel:{{ tel }}">{{ site.phone }}</a> or
+        <a href="mailto:{{ site.email | encode_email }}?subject=Stockist%20enquiry">email us</a>
+        to talk about ranging Superior Shavings.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<script src="{{ '/assets/js/stockists.js' | relative_url }}" defer></script>

@@ -1,0 +1,17 @@
+---
+layout: null
+---
+{
+  "name": "Superior Shavings",
+  "short_name": "Superior",
+  "description": "Kiln-dried pine woodshavings, baled at the source in Tumut NSW.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F0EEEA",
+  "theme_color": "#1F2224",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

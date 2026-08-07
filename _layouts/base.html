@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+  <head>
+    {% include head.html %}
+    {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    {% include header.html %}
+    <main id="main">{{ content }}</main>
+    {% include footer.html %}
+    {% include schema.html %}
+    <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+  </body>
+</html>
