@@ -1,5 +1,6 @@
 {%- assign home = page.home_url | default: '/' -%}
-{%- assign stk = page.stockists_index | default: home | append: 'stockists/' -%}
+{%- assign stk = page.stockists_index -%}
+{%- unless stk -%}{%- assign stk = home | append: 'stockists/' -%}{%- endunless -%}
 <header class="header">
   <div class="shell header__inner">
     <a class="wordmark" href="{{ home | relative_url }}">

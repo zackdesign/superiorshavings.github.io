@@ -1,5 +1,6 @@
 {%- assign home = page.home_url | default: '/' -%}
-{%- assign stk = page.stockists_index | default: home | append: 'stockists/' -%}
+{%- assign stk = page.stockists_index -%}
+{%- unless stk -%}{%- assign stk = home | append: 'stockists/' -%}{%- endunless -%}
 {%- assign tel = site.phone_intl | remove: ' ' -%}
 <footer class="footer" id="contact">
   <div class="shell">
