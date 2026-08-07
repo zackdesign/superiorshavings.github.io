@@ -104,9 +104,18 @@
   }
 
   /* Map is enhancement only: the list is the product. */
-  var map, markers = [];
+  var map, markers = [], info;
+  function markerCard(s) {
+    var addr = [s['Address 1'], s['Address 2']].filter(Boolean).join(', ');
+    var mapsQ = encodeURIComponent((s.Customer || '') + ' ' + addr);
+    return '<div style="font:400 14px/1.5 sans-serif; max-width:16rem; padding:2px 2px 4px">' +
+      '<strong>' + esc(s.Customer) + '</strong><br>' + esc(addr) + '<br>' +
+      (s.Phone ? '<a href="tel:' + esc(s.Phone.replace(/\s+/g, '')) + '">' + esc(s.Phone) + '</a> · ' : '') +
+      '<a href="https://www.google.com/maps/search/?api=1&query=' + mapsQ + '" rel="noopener">Directions</a></div>';
+  }
   function plot(items) {
     if (!window.google || !google.maps || !mapEl || mapEl.hidden) return;
+    if (info) info.close();
     markers.forEach(function (m) { m.setMap(null); });
     markers = [];
     var bounds = new google.maps.LatLngBounds();
@@ -115,6 +124,11 @@
       if (isNaN(lat) || isNaN(lng)) return;
       var pos = { lat: lat, lng: lng };
       var m = new google.maps.Marker({ map: map, position: pos, title: s.Customer });
+      m.addListener('click', function () {
+        if (!info) info = new google.maps.InfoWindow();
+        info.setContent(markerCard(s));
+        info.open({ anchor: m, map: map });
+      });
       markers.push(m);
       bounds.extend(pos);
     });

@@ -47,7 +47,8 @@ stockists_csv: "https://dl.dropboxusercontent.com/s/c4rl2z56dkohbzg/superior_sha
 # Legacy alias — the OLD layout still serving at / reads this key. Remove
 # when the preview is promoted and _layouts/default.html is deleted.
 stockistscsv: "https://dl.dropbox.com/s/c4rl2z56dkohbzg/superior_shavings.csv"
-maps_api_key: ""
+# Same key the old layout at / already uses on this domain
+maps_api_key: "AIzaSyCdShg_qm-ntKG78Q945VKor9WnKoX-lH8"
 
 author: Superior Shavings
 google_analytics: "G-JXGW730H2Z"
