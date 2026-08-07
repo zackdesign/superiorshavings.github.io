@@ -34,6 +34,9 @@ moisture: "8–13%"
 # Stockists — live CSV maintained by the owner in Dropbox. Fetched at runtime
 # in the browser (NOT at build time) so updates go live without a deploy.
 stockists_csv: "https://dl.dropboxusercontent.com/s/c4rl2z56dkohbzg/superior_shavings.csv"
+# Legacy alias — the OLD layout still serving at / reads this key. Remove
+# when the preview is promoted and _layouts/default.html is deleted.
+stockistscsv: "https://dl.dropbox.com/s/c4rl2z56dkohbzg/superior_shavings.csv"
 maps_api_key: ""
 
 author: Superior Shavings
