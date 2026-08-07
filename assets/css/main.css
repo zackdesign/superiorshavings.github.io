@@ -68,6 +68,11 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
 
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+/* Brand-red rings vanish on iron (2.6:1) — go white on dark surfaces */
+.header :focus-visible, .hero :focus-visible, .band--iron :focus-visible,
+.footer :focus-visible, .page-head :focus-visible, .mobnav__panel :focus-visible {
+  outline-color: #fff;
+}
 :focus:not(:focus-visible) { outline: none; }
 ::selection { background: var(--red); color: #fff; }
 
@@ -161,7 +166,7 @@ p:last-child { margin-bottom: 0; }
   color: #fff; cursor: pointer; list-style: none;
 }
 .mobnav__toggle::-webkit-details-marker { display: none; }
-.mobnav__toggle:hover { border-color: var(--red); color: var(--red); }
+.mobnav__toggle:hover { border-color: var(--red); color: #fff; }
 .mobnav__icon { display: none; }
 .mobnav__icon svg { width: 1.3rem; height: 1.3rem; display: block; }
 .mobnav:not([open]) .mobnav__icon--open { display: block; }
@@ -178,7 +183,7 @@ p:last-child { margin-bottom: 0; }
   padding: 0.85rem 0; border-bottom: 1px solid var(--iron-line);
   color: var(--smoke); text-decoration: none; font-size: 1.05rem;
 }
-.mobnav__links a:hover { color: var(--red); }
+.mobnav__links a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
 .mobnav__call { margin-top: 1.25rem; width: 100%; justify-content: center; }
 @media (min-width: 62rem) { .mobnav { display: none; } }
 
@@ -323,7 +328,7 @@ p:last-child { margin-bottom: 0; }
 .stk__input {
   flex: 1 1 18rem;
   padding: 0.85rem 1rem;
-  border: 1px solid var(--line); border-radius: var(--radius);
+  border: 1px solid #75726B; border-radius: var(--radius); /* ≥3:1 boundary on paper */
   background: var(--paper); color: var(--iron);
   font: 400 var(--step-0) / 1.4 var(--body);
 }

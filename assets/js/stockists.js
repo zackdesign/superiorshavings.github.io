@@ -18,6 +18,11 @@
 
   var all = [];
 
+  /* The filter lives in a <form role="search"> — Enter must refine, not
+     reload the page and wipe the loaded list. */
+  var form = root.querySelector('form');
+  if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+
   /* RFC-ish CSV parse: handles quoted fields and embedded commas. */
   function parseCSV(text) {
     var rows = [], row = [], field = '', inQ = false;
@@ -42,9 +47,22 @@
     });
   }
 
+  /* Two-pass: exact uppercase abbreviation first (the common case), then a
+     case-insensitive recovery pass — the live CSVs mix "VIC", "Vic" and
+     "Victoria" and the strict pass alone drops those rows. */
+  var STATE_NAMES = {
+    'new south wales': 'NSW', 'victoria': 'VIC', 'queensland': 'QLD',
+    'south australia': 'SA', 'western australia': 'WA', 'tasmania': 'TAS',
+    'northern territory': 'NT', 'australian capital territory': 'ACT'
+  };
   function stateOf(s) {
-    var m = ((s['Address 2'] || '') + ' ' + (s['Address 1'] || '')).match(/\b(NSW|VIC|QLD|SA|WA|TAS|NT|ACT)\b/);
-    return m ? m[1] : '';
+    var hay = (s['Address 2'] || '') + ' ' + (s['Address 1'] || '');
+    var m = hay.match(/\b(NSW|VIC|QLD|SA|WA|TAS|NT|ACT)\b/);
+    if (m) return m[1];
+    m = hay.match(/\b(new south wales|victoria|queensland|south australia|western australia|tasmania|northern territory|australian capital territory|nsw|vic|qld|sa|wa|tas|nt|act)\b/i);
+    if (!m) return '';
+    var t = m[1].toLowerCase();
+    return STATE_NAMES[t] || t.toUpperCase();
   }
 
   function render(items) {

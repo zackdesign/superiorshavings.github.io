@@ -1,17 +1,49 @@
 ---
-layout: base
+layout: null
 permalink: /404.html
-title: "Page not found"
 sitemap: false
 ---
-<section class="band">
-  <div class="shell">
-    <p class="eyebrow">404</p>
-    <h1 class="section-title">That page has gone through the screen</h1>
-    <p class="section-lede">
-      The address doesn't match anything here. Head back to the
-      <a href="/">home page</a> or ring us on
-      <a href="tel:+61352322200">(03) 5232 2200</a>.
-    </p>
-  </div>
-</section>
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found · Superior Shavings</title>
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <style>
+    /* Standalone on purpose: this page serves on the LIVE domain today, so it
+       carries no nav into the unreleased design and no links that 404. */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100dvh; display: grid; place-items: center;
+      background: #F0EEEA; color: #1F2224;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6; padding: 2rem;
+      border-top: 4px solid #BF2025;
+    }
+    main { max-width: 34rem; }
+    .eyebrow {
+      font-weight: 700; font-size: .72rem; letter-spacing: .24em;
+      text-transform: uppercase; color: #9A191D; margin: 0 0 1rem;
+    }
+    h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.08; margin: 0 0 1rem; }
+    p { margin: 0 0 1.5rem; color: #5C5E59; }
+    a { color: #1F2224; }
+    a.btn {
+      display: inline-block; background: #BF2025; color: #fff;
+      padding: .9rem 1.5rem; border-radius: 2px; font-weight: 600; text-decoration: none;
+    }
+    a.btn:hover { background: #9A191D; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">404 — Not found</p>
+    <h1>That page has gone through the screen.</h1>
+    <p>The address doesn't match anything here. Head back to the home page, or ring us on <a href="tel:+61352322200">(03)&nbsp;5232&nbsp;2200</a>.</p>
+    <a class="btn" href="/">Back to superiorshavings.com.au</a>
+  </main>
+</body>
+</html>

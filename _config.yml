@@ -1,7 +1,17 @@
 # Superior Shavings — part of Breeder's Choice Woodshavings Pty Ltd
-title: "Superior Shavings"
-tagline: "Kiln-dried pine woodshavings, baled at the source in Tumut NSW"
-description: >
+# NOTE: title + description are read by the OLD layout still serving /
+# ({% seo %} AND visible hero copy) — keep them byte-identical to the old
+# site until the /preview/ design is promoted. At flip time, swap them for
+# the brand_description / tagline copy below.
+title: "Superior Shavings - Premium Kiln-Dried Pine Woodshavings for Poultry, Horses & Small Animals"
+description: >-
+  Premium kiln-dried pine woodshavings for horse bedding, poultry litter, and small animal bedding.
+  High-absorbency, dust-extracted, all-natural animal bedding manufactured in Australia.
+# renamed from tagline: jekyll-seo-tag appends site.tagline to the LIVE
+# homepage <title>; brand_* keys are invisible to the old pages
+brand_tagline: "Kiln-dried pine woodshavings, baled at the source in Tumut NSW"
+# New-design copy (schema + future flip) — not read by the old layout.
+brand_description: >
   Premium kiln-dried pine woodshavings for horse stables, poultry sheds and
   small-animal bedding. Screened and dust-extracted, baled at the source in
   Tumut NSW, and stocked by produce stores and pet retailers in every state
@@ -54,7 +64,8 @@ exclude:
   - README.md
   - vendor/
 
+# og image on the new pages only — the OLD pages at / must stay untouched
 defaults:
-  - scope: { path: "" }
+  - scope: { path: "preview" }
     values:
       image: /images/og.jpg

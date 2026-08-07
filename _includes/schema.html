@@ -27,7 +27,7 @@ Console critical error (learned on mowercorner and acparts).
       "image": "{{ site.url }}/icon-512.png",
       "telephone": "{{ site.phone_intl }}",
       "email": "{{ site.email }}",
-      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "description": {{ site.brand_description | strip_newlines | strip | jsonify }},
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jepsen Avenue",
