@@ -131,8 +131,8 @@ p:last-child { margin-bottom: 0; }
 }
 .header__inner { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); min-height: 4.25rem; padding-block: 0.6rem; }
 /* Vector lockup (_includes/wordmark.svg): the original logo with its
-   raster device rebuilt as a rect — pixel-identical, crisp at any size.
-   White inner square + white S's carry it on the iron bar, no chip. */
+   raster device rebuilt as a rect — pixel-identical, crisp at any size,
+   and it matches the printed bale wrap. No chip needed. */
 .wordmark { display: flex; align-items: center; flex: none; }
 .wordmark svg { display: block; height: 2.4rem; width: auto; aspect-ratio: 1365 / 456; }
 .nav { display: none; gap: 1.4rem; margin-left: auto; }
