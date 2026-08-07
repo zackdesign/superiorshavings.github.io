@@ -130,14 +130,10 @@ p:last-child { margin-bottom: 0; }
   border-bottom: 3px solid var(--red);
 }
 .header__inner { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); min-height: 4.25rem; padding-block: 0.6rem; }
-/* The logo is red-on-transparent (embedded raster), so it rides on a white
-   chip in the dark bar — echoing the white card it always sat on. */
-.wordmark {
-  display: flex; align-items: center; flex: none;
-  background: #fff; padding: 0.4rem 0.7rem;
-  border-radius: var(--radius);
-}
-.wordmark img { display: block; height: 1.9rem; width: auto; }
+/* Vector lockup (see _includes/wordmark.svg): device stays brand red,
+   text takes currentColor — smoke on the iron bar. */
+.wordmark { display: flex; align-items: center; flex: none; color: var(--smoke); }
+.wordmark svg { display: block; height: 2.1rem; width: auto; aspect-ratio: 492.7 / 115.4; }
 .nav { display: none; gap: 1.4rem; margin-left: auto; }
 .nav a {
   font: 500 var(--step--1) / 1 var(--mono);
