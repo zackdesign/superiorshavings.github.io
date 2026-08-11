@@ -264,10 +264,11 @@ p:last-child { margin-bottom: 0; }
    Heavy washes keep every band at its original text contrast. */
 .handsband { margin: 0; }
 .handsband img { width: 100%; height: clamp(160px, 22vw, 300px); object-fit: cover; display: block; }
+/* back4 now carries the hero, so this band takes the (already pale) back2 */
 #uses.band {
   background:
-    linear-gradient(rgba(240, 238, 234, 0.94), rgba(240, 238, 234, 0.94)),
-    url('/images/back4.jpg') center/cover;
+    linear-gradient(rgba(240, 238, 234, 0.9), rgba(240, 238, 234, 0.9)),
+    url('/images/back2.jpg') center/cover;
 }
 #trade.band--iron {
   background:

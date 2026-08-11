@@ -7,18 +7,18 @@ layout: base
 <!-- Hero: the product, not the logo ---------------------------------------->
 <section class="hero">
   <div class="hero__media">
-    <img src="{{ '/images/site/texture.jpg' | relative_url }}"
-         srcset="{{ '/images/site/texture-1100.jpg' | relative_url }} 1100w, {{ '/images/site/texture.jpg' | relative_url }} 2200w"
-         sizes="100vw" width="2200" height="900" fetchpriority="high" decoding="async"
-         alt="Pale kiln-dried pine shavings, close up">
+    <img src="{{ '/images/site/floor.jpg' | relative_url }}"
+         srcset="{{ '/images/site/floor-1100.jpg' | relative_url }} 1100w, {{ '/images/site/floor.jpg' | relative_url }} 2000w"
+         sizes="100vw" width="2000" height="819" fetchpriority="high" decoding="async"
+         alt="Kiln-dried pine shavings on the plant floor">
   </div>
   <div class="shell hero__inner">
     <p class="hero__eyebrow">Tumut NSW · Est. 2002</p>
     <h1 class="hero__title">Pine shavings, baled <em>at the source</em></h1>
     <p class="hero__lede">
-      Kiln-dried radiata pine, screened and dust-extracted, pressed into 14kg
-      bales in the Snowy Mountains foothills — and stocked by produce stores
-      and pet retailers in every state of Australia.
+      Kiln-dried radiata pine, screened and dust-extracted and packaged into
+      14kg bales. Stocked by produce stores and pet retailers in every state
+      of Australia.
     </p>
     <div class="hero__actions">
       <a class="btn btn--primary" href="{{ page.stockists_index | default: '/stockists/' | relative_url }}">
@@ -44,7 +44,8 @@ layout: base
     <h2 class="section-title">One product, done properly</h2>
     <p class="section-lede">
       We do one thing: premium pine shavings for animal bedding. Every bale is
-      kiln-dried, screened and dust-extracted before it's pressed.
+      kiln-dried, screened and dust-extracted before it's packaged into 14kg
+      bales.
     </p>
 
     <div class="prodgrid">
@@ -65,25 +66,26 @@ layout: base
       <article class="card" data-reveal>
         <h3>Screened &amp; dust-extracted</h3>
         <p>
-          Fine dust and sawdust are screened out before baling — less of the
-          airborne dust that aggravates airways in horses with respiratory
-          sensitivities, and a cleaner shed for poultry too.
+          All of our shavings pass through a purpose-built three-part screen.
+          The first 'star screen' removes any oversize pieces, with the
+          remaining shavings entering a rotary trommel screen that extracts
+          the sawdust and fines. The final phase of the screening process
+          removes the smaller airborne dust particles.
         </p>
       </article>
       <article class="card" data-reveal>
         <h3>100% natural pine</h3>
         <p>
-          No chemical additives — just radiata pine shavings from kiln-dried
-          timber. Suited to horses, poultry, and small animals from rats and
-          rabbits to reptiles.
+          No chemical additives, just radiata pine shavings from kiln-dried
+          timber. Suited for horses, poultry and small animals (from rats and
+          rabbits to reptiles).
         </p>
       </article>
       <article class="card" data-reveal>
         <h3>Handled once</h3>
         <p>
           Our Tumut plant sits in the heart of NSW softwood country. Shavings
-          go from the mill into our baler with minimal handling — fewer steps
-          between the saw and your shed.
+          go from the mill into our baler with minimal handling.
         </p>
       </article>
     </div>
@@ -104,18 +106,13 @@ layout: base
       </li>
       <li class="millline__step" data-reveal>
         <span class="millline__num">02</span>
-        <h3>Screen</h3>
-        <p>A rotary screen separates out sawdust and fines, leaving only the coarse, absorbent curl.</p>
+        <h3>Screened and dust extracted</h3>
+        <p>A rotary screen separates out sawdust and fines, leaving only the coarse, absorbent shavings curl. The airborne dust is extracted before baling.</p>
       </li>
       <li class="millline__step" data-reveal>
         <span class="millline__num">03</span>
-        <h3>Dust extraction</h3>
-        <p>Airborne dust is extracted before baling — what's left is the bedding, not the by-product of the by-product.</p>
-      </li>
-      <li class="millline__step" data-reveal>
-        <span class="millline__num">04</span>
         <h3>Bale press</h3>
-        <p>Pressed into {{ site.bale_weight }} poly-wrapped bales that expand to {{ site.bale_volume }} — dense to freight, easy to store.</p>
+        <p>Pressed into {{ site.bale_weight }} bales that expand to {{ site.bale_volume }}. Dense to freight, easy to store.</p>
       </li>
     </ol>
   </div>
@@ -133,17 +130,17 @@ layout: base
     <h2 class="section-title">Stables, sheds and hutches</h2>
     <div class="uses">
       <figure class="use" data-reveal>
-        <img src="{{ '/images/site/stable.jpg' | relative_url }}" alt="A white horse mid-canter" loading="lazy" decoding="async" width="1200" height="800">
+        <img src="{{ '/images/site/stable.jpg' | relative_url }}" alt="A horse in a stable bedded on pine shavings" loading="lazy" decoding="async" width="460" height="307">
         <figcaption>
           <h3>Equine</h3>
           <p>Low-dust bedding for stables and floats — comfortable underfoot, quick to muck out, kind on airways.</p>
         </figcaption>
       </figure>
       <figure class="use" data-reveal>
-        <img src="{{ '/images/site/chooks.jpg' | relative_url }}" alt="Hens in an iron-clad shed" loading="lazy" decoding="async" width="1200" height="800">
+        <img src="{{ '/images/site/chooks.jpg' | relative_url }}" alt="Hens on fresh pine shavings" loading="lazy" decoding="async" width="460" height="307">
         <figcaption>
           <h3>Poultry</h3>
-          <p>Dry, absorbent litter for coops, nesting boxes and sheds — from six chooks in the backyard to commercial operations.</p>
+          <p>Dry, absorbent litter for coops, nesting boxes and sheds — from chooks in the backyard to commercial operations.</p>
         </figcaption>
       </figure>
       <figure class="use use--text" data-reveal>
@@ -161,12 +158,13 @@ layout: base
   <div class="shell trade">
     <div>
       <p class="eyebrow eyebrow--iron">Trade &amp; bulk</p>
+      {%- comment -%} Jarrod struck the AIRR wording out of this section in his
+      edit but left no replacement; this keeps the band from going empty using
+      only copy he approved elsewhere. Flagged with him. {%- endcomment -%}
       <h2 class="section-title">By the bale, the pallet, or the truckload</h2>
       <p class="section-lede section-lede--iron">
-        We supply produce stores, saddleries, pet retailers, studs and poultry
-        operations across Australia — including through the AIRR national
-        rural retail network. Ring us about pallet quantities, mixed loads and
-        becoming a stockist.
+        We supply produce stores, saddleries and pet retailers in every state.
+        Ring us about pallet quantities and becoming a stockist.
       </p>
     </div>
     <div class="trade__actions">
@@ -183,10 +181,9 @@ layout: base
       <p class="eyebrow">Since 2002</p>
       <h2 class="section-title">Holbrook to Tumut</h2>
       <p>
-        Superior Shavings started baling at the Mill Industrial Estate in
-        Holbrook, NSW in 2002. In 2019 we moved the plant to Tumut, in the
-        foothills of the Snowy Mountains — one of the biggest softwood milling
-        regions in the country — to be closer to the timber.
+        Superior Shavings started baling in Holbrook, NSW in 2002. In 2019 we
+        moved the plant to Tumut, in the foothills of the Snowy Mountains and
+        one of the biggest softwood milling regions in the country.
       </p>
       <p>
         Today we're part of the <strong>Breeder's Choice Woodshavings</strong>
@@ -200,9 +197,8 @@ layout: base
         </a>
       </p>
     </div>
-    <img class="story__img" src="{{ '/images/site/bench.jpg' | relative_url }}"
-         srcset="{{ '/images/site/bench-1100.jpg' | relative_url }} 1100w, {{ '/images/site/bench.jpg' | relative_url }} 2200w"
+    <img class="story__img" src="{{ '/images/site/pile.jpg' | relative_url }}"
          sizes="(min-width: 60rem) 50vw, 100vw"
-         alt="Fresh pine shavings beside woodworking tools on a bench" loading="lazy" decoding="async" width="2200" height="900">
+         alt="A pile of Superior Shavings pine shavings" loading="lazy" decoding="async" width="1100" height="900">
   </div>
 </section>
