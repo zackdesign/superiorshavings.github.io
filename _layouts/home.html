@@ -4,7 +4,6 @@ layout: base
 {%- assign tel = site.phone_intl | remove: ' ' -%}
 {%- assign pfx = page.url | replace: 'index.html', '' | split: '#' | first -%}
 
-<!-- Hero: the product, not the logo ---------------------------------------->
 <section class="hero">
   <div class="hero__media">
     <img src="{{ '/images/site/floor.jpg' | relative_url }}"
@@ -27,7 +26,6 @@ layout: base
       <a class="btn btn--ghost" href="#trade">Trade &amp; bulk enquiries</a>
     </div>
 
-    <!-- Bale ticket: the spec, as printed on the bale -->
     <div class="ticket" role="group" aria-label="Bale specifications">
       <div class="ticket__row"><span class="ticket__key">Bale</span><span class="ticket__val">{{ site.bale_weight }} compressed</span></div>
       <div class="ticket__row"><span class="ticket__key">Volume</span><span class="ticket__val">{{ site.bale_volume }}</span></div>
@@ -37,7 +35,6 @@ layout: base
   </div>
 </section>
 
-<!-- Product ----------------------------------------------------------------->
 <section class="band" id="product">
   <div class="shell">
     <p class="eyebrow">The product</p>
@@ -64,13 +61,11 @@ layout: base
         </p>
       </article>
       <article class="card" data-reveal>
-        <h3>Screened &amp; dust-extracted</h3>
+        <h3>Triple screened</h3>
         <p>
-          All of our shavings pass through a purpose-built three-part screen.
-          The first 'star screen' removes any oversize pieces, with the
-          remaining shavings entering a rotary trommel screen that extracts
-          the sawdust and fines. The final phase of the screening process
-          removes the smaller airborne dust particles.
+          Three screens, not one. A star screen takes out the oversize
+          pieces, a rotary trommel pulls the sawdust and fines, and a final
+          stage lifts the airborne dust before the shavings reach the baler.
         </p>
       </article>
       <article class="card" data-reveal>
@@ -89,11 +84,10 @@ layout: base
         </p>
       </article>
     </div>
-    </div><!-- /prodgrid -->
+    </div>
   </div>
 </section>
 
-<!-- Process: a real sequence ------------------------------------------------>
 <section class="band band--iron" id="process">
   <div class="shell">
     <p class="eyebrow eyebrow--iron">How it's made</p>
@@ -107,7 +101,7 @@ layout: base
       <li class="millline__step" data-reveal>
         <span class="millline__num">02</span>
         <h3>Screened and dust extracted</h3>
-        <p>A rotary screen separates out sawdust and fines, leaving only the coarse, absorbent shavings curl. The airborne dust is extracted before baling.</p>
+        <p>Three screens in sequence — oversize, then sawdust and fines, then airborne dust — leaving only the coarse, absorbent shavings curl.</p>
       </li>
       <li class="millline__step" data-reveal>
         <span class="millline__num">03</span>
@@ -118,12 +112,10 @@ layout: base
   </div>
 </section>
 
-<!-- The product, in hand ----------------------------------------------------->
 <figure class="handsband">
   <img src="{{ '/images/back1.jpg' | relative_url }}" alt="A handful of fresh pine shavings" loading="lazy" decoding="async" width="2000" height="352">
 </figure>
 
-<!-- Who it's for ------------------------------------------------------------>
 <section class="band" id="uses">
   <div class="shell">
     <p class="eyebrow">Who it's for</p>
@@ -153,14 +145,10 @@ layout: base
   </div>
 </section>
 
-<!-- Trade ------------------------------------------------------------------->
 <section class="band band--iron" id="trade">
   <div class="shell trade">
     <div>
       <p class="eyebrow eyebrow--iron">Trade &amp; bulk</p>
-      {%- comment -%} Jarrod struck the AIRR wording out of this section in his
-      edit but left no replacement; this keeps the band from going empty using
-      only copy he approved elsewhere. Flagged with him. {%- endcomment -%}
       <h2 class="section-title">By the bale, the pallet, or the truckload</h2>
       <p class="section-lede section-lede--iron">
         We supply produce stores, saddleries and pet retailers in every state.
@@ -174,7 +162,6 @@ layout: base
   </div>
 </section>
 
-<!-- Story ------------------------------------------------------------------->
 <section class="band" id="story">
   <div class="shell story">
     <div class="story__text">
