@@ -1,6 +1,8 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: default
+layout: home
+permalink: /
+title: "Kiln-Dried Pine Woodshavings, Baled at the Source in Tumut NSW"
+description: "Premium kiln-dried pine woodshavings for horse stables, poultry sheds and small-animal bedding. Screened, dust-extracted, baled in Tumut NSW and stocked in every state."
+home_url: /
+stockists_index: /stockists/
 ---
